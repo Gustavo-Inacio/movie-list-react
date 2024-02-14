@@ -4,7 +4,7 @@ const Navigation = () => {
     return (
         <ul className="list-none flex">
             <li>
-                <CustomNavLink to="/home">Home</CustomNavLink>
+                <CustomNavLink to="/">Home</CustomNavLink>
             </li>
             <li>
                 <CustomNavLink to="/movies">Movies</CustomNavLink>

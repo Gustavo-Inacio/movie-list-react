@@ -8,7 +8,7 @@ const CustomNavLink = ({children, to}) => {
 }
 
 CustomNavLink.propTypes = {
-    children : PropTypes.element | PropTypes.string,
+    children : PropTypes.string,
     to: PropTypes.string
 }
 
