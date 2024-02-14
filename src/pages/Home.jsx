@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom";
-import config from "../datasoruce/config";
 import { getDetailedMovieList } from "../datasoruce/OMDB/apiOMDB";
 import { useEffect, useState } from "react";
-import CustomSlider from "../components/MovieRow/CustomSlider";
-import MovieSlider from "../components/MovieRow/MovieSlider";
+import MovieRow from "../components/MovieRow/MovieRow";
 
 export default function Home () {
 
@@ -26,8 +23,8 @@ export default function Home () {
 
 
     return (
-        <div>
-            <MovieSlider movieList={movieListState}></MovieSlider>
+        <div className="mt-10">
+            <MovieRow  movieList={movieListState} title={"Results for "}></MovieRow>
         </div>
     );
 }

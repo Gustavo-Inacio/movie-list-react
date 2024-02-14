@@ -1,3 +1,4 @@
+import DetailedShowDTO from "../../model/dto/DetailedShow.dto";
 import config_OMDB from "../config";
 
 export const getMovieList = async (query = {}) => {
@@ -24,7 +25,12 @@ export const getDetailedMovieList = async(query = {}) => {
     movieList = movieList.Search;
 
     const detailedMovies = Promise.all(
-        movieList.map(movie => getDetailedMovie(movie.imdbID)),
+        movieList.map(async (movie) => {
+            const detailedMovieFetched = await getDetailedMovie(movie.imdbID);
+            const detailedMovieDTO = new DetailedShowDTO(detailedMovieFetched);
+            
+            return detailedMovieDTO;
+        }),
     ).then(movies => movies);
 
     return detailedMovies;

@@ -1,44 +1,52 @@
 
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import PropTypes from 'prop-types'
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 import './a.css';
+import './movieSlider.css';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
-// import required modules
-import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import MovieCard from '../MovieCard/MovieCard';
+import { useRef } from 'react';
 
 export const MovieSlider = ({movieList}) => {
-
-    // const [movieListState, setMovieListState] = useState([]);
-
-    // useEffect(() => {
-
-    // }, []);
+  const nextNavigator = useRef(null);
+  const beforeNavigator = useRef(null);
 
   return (
+    <div className='movie-slider'>
+      <button ref={beforeNavigator} className='arrowLeft'>
+        <ArrowBackIosNewOutlinedIcon sx={{ color: "#fff"}} fontSize="large"/>
+      </button>
+      <button ref={nextNavigator} className='arrowRight'>
+          <ArrowForwardIosOutlinedIcon  sx={{ color: "#fff" }} fontSize="large"/>
+      </button>
       <Swiper
-        slidesPerView={3}
-        centeredSlides={true}
+        slidesPerView={'auto'}
         spaceBetween={10}
-        grabCursor={true}
-        pagination={{
-          clickable: true,
+        navigation={{
+          nextEl: nextNavigator.current,
+          prevEl: beforeNavigator.current,
         }}
-        modules={[Pagination]}
-        className="mySwiper h-72"
+        modules={[Navigation]}
+        className="mySwiper"
       >
         {movieList.map((movie) => {
             return (
-                <SwiperSlide key={movie.imdbID}>{movie.Title}</SwiperSlide>
+                <SwiperSlide key={movie.imdbID} className='w-fit'>
+                  <MovieCard show={movie} ></MovieCard>
+                </SwiperSlide>
             );
         })}
       </Swiper>
+
+    </div>
   );
 }
 
