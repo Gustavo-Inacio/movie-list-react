@@ -2,52 +2,62 @@ import { getDetailedMovieList } from "../datasoruce/OMDB/apiOMDB";
 import { useEffect, useState } from "react";
 import MovieRow from "../components/MovieRow/MovieRow";
 import PropTypes from 'prop-types'
+import Spinner from "../components/Spinner/Spinner";
 
-export default function Home ({searchShowQuery}) {
+export default function Home ({searchShowQuery, isSearching}) {
 
     const [movieListState , setMovieListState] = useState([]);
+    const [tvShowState , setTvShowState] = useState([]);
 
-    useEffect( () => {
-        const featchData = async () => {
-            let movieList = await getDetailedMovieList({
-                s:"Game of",
-            });
-        
-            setMovieListState(movieList);
+    const featchData = async (searchQuery) => {
+        let movieList = await getDetailedMovieList({
+            s:searchQuery,
+            type: "movie"
+        });
+    
+        setMovieListState(movieList);
 
-        }
+        let tvShowList = await getDetailedMovieList({
+            s: searchQuery,
+            type: "series"
+        });
+    
+        setMovieListState(movieList);
+        setTvShowState(tvShowList);
+    }
 
-        featchData();
-
-    }, []);
+    // useEffect(() => {
+    //     featchData(searchShowQuery);
+    // }, [searchShowQuery]);
 
     useEffect(() => {
-
-        if (!searchShowQuery) {
-            return;
-        }
-
-        const featchData = async () => {
-            let movieList = await getDetailedMovieList({
-                s:searchShowQuery,
-            });
-
-            setMovieListState(movieList);
-            console.log(movieList);
-        }
-
-        featchData();
+       featchData(searchShowQuery)
 
     }, [searchShowQuery]);
 
-
     return (
         <div className="mt-10">
-            <MovieRow  movieList={movieListState} title={"Results for "}></MovieRow>
+            {
+                isSearching ?
+                <div className="w-full flex justify-center">
+                    <Spinner />
+                </div>
+                :
+                <div>
+                    {
+                        <MovieRow  movieList={movieListState} title={`Movies -  "${searchShowQuery}"`}/>
+                    }
+                    {
+                        <MovieRow  movieList={tvShowState} title={`Series - "${searchShowQuery}"`} />
+                    }
+                </div>
+            }
+            
         </div>
     );
 }
 
 Home.propTypes = {
     searchShowQuery : PropTypes.string,
+    isSearching: PropTypes.bool
 }

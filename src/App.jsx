@@ -8,16 +8,19 @@ import { useEffect, useState } from 'react'
 function App() {
 
   const [searchShowQuery, setSearchShowQuery] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    console.log(searchShowQuery);
-  });
+    if (searchShowQuery == '') {
+      setSearchShowQuery("Home")
+    }
+  }, [searchShowQuery]);
 
   return (
     <BrowserRouter>
-      <Navbar setSearchShowQuery={setSearchShowQuery} />
+      <Navbar setSearchShowQuery={setSearchShowQuery} setIsSearching={setIsSearching}/>
       <Routes>
-          <Route index element={<Home searchShowQuery={searchShowQuery} ></Home>}></Route>
+          <Route index element={<Home searchShowQuery={searchShowQuery} isSearching={isSearching} ></Home>}></Route>
           <Route path='/other' element={<Other></Other>}></Route>
       </Routes>
     </BrowserRouter>
