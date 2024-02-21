@@ -21,11 +21,14 @@ export const getDetailedMovie = async (movieId) => {
 }
 
 export const getDetailedMovieList = async(query = {}) => {
-    let movieList = await getMovieList(query);
-    movieList = movieList.Search;
+    let { Response, Search } = await getMovieList(query);
+
+    if (Response == "False") {
+        return []
+    }
 
     const detailedMovies = Promise.all(
-        movieList.map(async (movie) => {
+        Search.map(async (movie) => {
             const detailedMovieFetched = await getDetailedMovie(movie.imdbID);
             const detailedMovieDTO = new DetailedShowDTO(detailedMovieFetched);
             
