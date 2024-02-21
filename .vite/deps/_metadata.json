@@ -1,0 +1,76 @@
+{
+  "hash": "5b3fd378",
+  "configHash": "d55b9c5e",
+  "lockfileHash": "d7f9907b",
+  "browserHash": "07fc412a",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "d2d003b3",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "b6d7f1d2",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "cdc9ccfd",
+      "needsInterop": false
+    },
+    "prop-types": {
+      "src": "../../node_modules/prop-types/index.js",
+      "file": "prop-types.js",
+      "fileHash": "80f7ecc7",
+      "needsInterop": true
+    },
+    "swiper/react": {
+      "src": "../../node_modules/swiper/swiper-react.mjs",
+      "file": "swiper_react.js",
+      "fileHash": "dba83815",
+      "needsInterop": false
+    },
+    "@mui/icons-material/ArrowBackIosNewOutlined": {
+      "src": "../../node_modules/@mui/icons-material/ArrowBackIosNewOutlined.js",
+      "file": "@mui_icons-material_ArrowBackIosNewOutlined.js",
+      "fileHash": "fe3070a5",
+      "needsInterop": true
+    },
+    "@mui/icons-material/ArrowForwardIosOutlined": {
+      "src": "../../node_modules/@mui/icons-material/ArrowForwardIosOutlined.js",
+      "file": "@mui_icons-material_ArrowForwardIosOutlined.js",
+      "fileHash": "340fa029",
+      "needsInterop": true
+    },
+    "swiper/modules": {
+      "src": "../../node_modules/swiper/modules/index.mjs",
+      "file": "swiper_modules.js",
+      "fileHash": "c63a4641",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-FBRNPY62": {
+      "file": "chunk-FBRNPY62.js"
+    },
+    "chunk-PZUJ4NQX": {
+      "file": "chunk-PZUJ4NQX.js"
+    },
+    "chunk-544NMATE": {
+      "file": "chunk-544NMATE.js"
+    },
+    "chunk-UM3JHGVO": {
+      "file": "chunk-UM3JHGVO.js"
+    },
+    "chunk-6KLZAWZ2": {
+      "file": "chunk-6KLZAWZ2.js"
+    },
+    "chunk-CEQRFMJQ": {
+      "file": "chunk-CEQRFMJQ.js"
+    }
+  }
+}
