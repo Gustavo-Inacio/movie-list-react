@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 
 
-const SearchBar = ({className, onInputDebounce}) => {
+const SearchBar = ({className, onInputDebounce, setIsSearching}) => {
 
     const [searchBarState, setSearchBarState] = useState('');
 
-    const debouncedSearch = useDebounce(searchBarState, 5000);
+    const debouncedSearch = useDebounce(searchBarState, 400);
 
     const handleInputSearch = (event) => {
         setSearchBarState(event.target.value);
@@ -14,7 +14,16 @@ const SearchBar = ({className, onInputDebounce}) => {
 
     useEffect(() => {
         onInputDebounce(debouncedSearch);
-    }, [debouncedSearch])
+        setIsSearching(false);
+    }, [debouncedSearch]);
+
+    useEffect(() => {
+        setIsSearching(true);
+    }, [searchBarState]);
+
+    useEffect(() => {
+        setIsSearching(false);
+    }, []);
 
     return (
         <div className={'flex w-300 rounded bg-white ' + className}>
