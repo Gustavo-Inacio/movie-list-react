@@ -6,12 +6,6 @@ const Navigation = () => {
             <li>
                 <CustomNavLink to="/">Home</CustomNavLink>
             </li>
-            <li>
-                <CustomNavLink to="/movies">Movies</CustomNavLink>
-            </li>
-            <li>
-                <CustomNavLink to="/tv-shows">Tv Shows</CustomNavLink>
-            </li>
         </ul>
     );
 }

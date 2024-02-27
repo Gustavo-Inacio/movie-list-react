@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import DetailedShowDTO from '../../model/dto/DetailedShow.dto';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const MovieCard = ({
-    children, show
+    show
 }) => {
 
     const imgStyle = {
@@ -20,7 +19,6 @@ const MovieCard = ({
 }
 
 MovieCard.propTypes = {
-    optionlaChildren : PropTypes.element,
     show: PropTypes.instanceOf(DetailedShowDTO)
 }
 

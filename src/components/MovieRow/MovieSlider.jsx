@@ -34,6 +34,10 @@ export const MovieSlider = ({movieList}) => {
           nextEl: nextNavigator.current,
           prevEl: beforeNavigator.current,
         }}
+        onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = beforeNavigator.current
+            swiper.params.navigation.nextEl = nextNavigator.current
+        }}
         modules={[Navigation]}
         className="mySwiper"
       >
