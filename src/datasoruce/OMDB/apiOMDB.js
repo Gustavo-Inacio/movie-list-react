@@ -17,6 +17,10 @@ export const getDetailedMovie = async (movieId) => {
     let detailedMovie = await fetch(`${config_OMDB.BASE_URL}?apikey=${config_OMDB.API_KEY}&i=${movieId}`);
     detailedMovie = await detailedMovie.json();
 
+    if (detailedMovie['Response'] == "False") {
+        throw new Error(detailedMovie);
+    }
+
     return detailedMovie;
 }
 

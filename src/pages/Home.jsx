@@ -16,6 +16,7 @@ export default function Home ({searchShowQuery, isSearching}) {
         });
     
         setMovieListState(movieList);
+        console.log("deatiled movie list ->", movieList);
 
         let tvShowList = await getDetailedMovieList({
             s: searchQuery,
@@ -25,10 +26,6 @@ export default function Home ({searchShowQuery, isSearching}) {
         setMovieListState(movieList);
         setTvShowState(tvShowList);
     }
-
-    // useEffect(() => {
-    //     featchData(searchShowQuery);
-    // }, [searchShowQuery]);
 
     useEffect(() => {
        featchData(searchShowQuery)

@@ -1,9 +1,10 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
-import Other from './pages/Other'
 import Navbar from './components/Navbar/Navbar'
 import { useEffect, useState } from 'react'
+import MoviePage from './pages/MoviePage'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -19,10 +20,15 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar setSearchShowQuery={setSearchShowQuery} setIsSearching={setIsSearching}/>
-      <Routes>
-          <Route index element={<Home searchShowQuery={searchShowQuery} isSearching={isSearching} ></Home>}></Route>
-          <Route path='/other' element={<Other></Other>}></Route>
-      </Routes>
+      <main style={{minHeight: `80vh`}}>
+        <Routes>
+            <Route index element={<Home searchShowQuery={searchShowQuery} isSearching={isSearching} ></Home>}></Route>
+            <Route element={ <MoviePage /> } path='/show/:imdbID' ></Route>
+        </Routes>
+
+      </main>
+      <div className='mt-20'>asas</div>
+      <Footer></Footer>
     </BrowserRouter>
   )
 }
